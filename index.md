@@ -1,26 +1,14 @@
-## Portfolio
+## About me
 
----
+I'm a PhD student at [https://www.ip-paris.fr/en/home-en/](Institut Polytechnique de Paris), supported by the company [https://www.safran-group.com/](Safran) through the CIFRE convention 2017/1317. 
 
-### Category Name 1 
+### Education
 
 [Project 1 Title](/sample_page)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
-[Project 2 Title](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
 
----
-[Project 3 Title](http://example.com/)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
-
----
-
-### Category Name 2
+### Recent works
 
 - [Project 1 Title](http://example.com/)
-- [Project 2 Title](http://example.com/)
-- [Project 3 Title](http://example.com/)
-- [Project 4 Title](http://example.com/)
-- [Project 5 Title](http://example.com/)

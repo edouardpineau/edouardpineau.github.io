@@ -70,4 +70,4 @@ A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.0073
 ---
 
 #### Performance and risk analyst
-##### *Rohschild & Co*
+##### *Rothschild & Co*

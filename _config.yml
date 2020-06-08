@@ -8,6 +8,3 @@ description: > # your text below (remove <br> elements if you don't need line br
   <a href="https://scholar.google.fr/citations?user=FptvuZsAAAAJ&hl=en">Google Scholar</a> 
   
 # theme: jekyll-theme-basically-basic
-theme: jekyll-theme-cayman
-gems:
-  - jekyll-seo-tag

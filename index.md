@@ -36,7 +36,7 @@ I'm interested in recent advances in representation learning with neural generat
 
 #### [Variational Recurrent Neural Networks for Graph Classification](https://rlgm.github.io/papers/9.pdf)
 
-**Short abstract**: graph can be seen as sequences of nodes. With node ordering methods and recurrent neural networks (i.e. neural networks made for sequence modeling), we can greedily learn representation of graphs for classification. 
+**Short abstract**: graphs can be seen as sequences of nodes. With node ordering methods and recurrent neural networks (i.e. neural networks made for sequence modeling), we can greedily learn representation of graphs for classification. 
 
 --- 
 

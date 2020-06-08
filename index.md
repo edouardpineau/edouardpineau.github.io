@@ -19,6 +19,8 @@ I'm interested in recent advances in representation learning with neural generat
 #### 2014-2016: Msc Applied Mathematics for Financial Engineering
 ##### [Paris-Dauphine University](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-ingenierie-statistique-et-financiere)
 
+---
+
 #### 2010-2013: Bsc Applied Mathematics and Economics
 ##### [Paris-Dauphine University](https://dauphine.psl.eu/formations/licences/mathematiques)
 
@@ -49,3 +51,23 @@ A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.0073
 #### Representation of multivariate time series on causality graphs
 
 #### Structural components extraction from time series data
+
+
+## Work experience
+
+#### Data analyst
+##### Safran Research and technology
+---
+
+#### Equity and derivatives assistant portfolio manager
+##### [Rivage Investment](https://www.rivageinvestment.com/index.php#1)
+
+---
+
+#### Derivatives and structured assistant portfolio manager
+##### [Allianz Global Investors](https://www.allianzgi.com/)
+
+---
+
+#### Performance and risk analyst
+##### [Rohschild & Co](https://www.rothschildandco.com/)

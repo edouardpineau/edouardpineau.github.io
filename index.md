@@ -7,6 +7,8 @@ I'm a PhD student at [Institut Polytechnique de Paris](https://www.ip-paris.fr/e
 #### 2017-2020: PhD Computer Science
 ##### [Institut Polytechnique de Paris](https://www.ip-paris.fr/en/home-en/)
 
+--- 
+
 #### 2016-2017: Msc Machine Learning
 ##### [Paris-Dauphine University & ENS Paris-Saclay](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-mathematiques-apprentissage-sciences-humanites)
 

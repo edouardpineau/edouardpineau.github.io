@@ -12,17 +12,33 @@ I'm a PhD student at [Institut Polytechnique de Paris](https://www.ip-paris.fr/e
 #### 2016-2017: Msc Machine Learning
 ##### [Paris-Dauphine University & ENS Paris-Saclay](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-mathematiques-apprentissage-sciences-humanites)
 
+--- 
+
 #### 2014-2016: Msc Applied Mathematics for Financial Engineering
 ##### [Paris-Dauphine University](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-ingenierie-statistique-et-financiere)
 
 #### 2010-2013: Bsc Applied Mathematics and Economics
 ##### [Paris-Dauphine University](https://dauphine.psl.eu/formations/licences/mathematiques)
 
+--- 
+
 ## Recent published research
 
 #### [Seq2VAR: multivariate time series representation with relational neural networks and linear autoregressive model](https://link.springer.com/chapter/10.1007/978-3-030-39098-3_10)
 
+**Short abstract**: linear vector autoregressive models (VAR) are common multivariate time series (MTS) modeling tools. In particular, sparifying VAR models enable to extract information about causality underlying the data. Yet, when we have a large dataset of MTS, fitting a sparse VAR in each sample is not tractable. We propose to leverage de recent advances on time series representation with relational neural network to show that we can robustly and efficiently extract linear causality from MTS samples. 
+
+--- 
+
 #### [Variational Recurrent Neural Networks for Graph Classification](https://rlgm.github.io/papers/9.pdf)
 
+**Short abstract**: graph can be seen as sequences of nodes. With node ordering methods and sequence modeling tools, we can greedily learn representation of graphs for classification. 
+
+--- 
+
 #### [A simple baseline algorithm for graph classification](https://arxiv.org/abs/1810.09155)
+
+**Short abstract**: graphs have exotic features like variable size and no trivial alignement. To compare graphs, they need to be represented with features that are invariant no node ordering and consistent with changes in graphs (e.g. node or edge addition). A feature that satistisfies the aforementioned properties is the Laplacian spectrum. We show that it is a simple but competitive baseline for graph classification.
+
+A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.00735.pdf). 
 

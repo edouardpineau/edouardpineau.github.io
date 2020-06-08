@@ -44,7 +44,7 @@ I'm interested in recent advances in representation learning with neural generat
 
 A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.00735.pdf). 
 
-## Ongoing work subjects
+## Ongoing work topics
 
 #### Representation of multivariate time series on causality graphs
 

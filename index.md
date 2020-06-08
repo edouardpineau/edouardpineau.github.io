@@ -7,22 +7,22 @@ I'm interested in recent advances in representation learning with neural generat
 ## Education
 
 #### 2017-2020: PhD Computer Science
-##### [Institut Polytechnique de Paris](https://www.ip-paris.fr/en/home-en/)
+##### *[Institut Polytechnique de Paris](https://www.ip-paris.fr/en/home-en/)*
 
 --- 
 
 #### 2016-2017: Msc Machine Learning
-##### [Paris-Dauphine University & ENS Paris-Saclay](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-mathematiques-apprentissage-sciences-humanites)
+##### *[Paris-Dauphine University & ENS Paris-Saclay](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-mathematiques-apprentissage-sciences-humanites)*
 
 --- 
 
 #### 2014-2016: Msc Applied Mathematics for Financial Engineering
-##### [Paris-Dauphine University](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-ingenierie-statistique-et-financiere)
+##### *[Paris-Dauphine University](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-ingenierie-statistique-et-financiere)*
 
 ---
 
 #### 2010-2013: Bsc Applied Mathematics and Economics
-##### [Paris-Dauphine University](https://dauphine.psl.eu/formations/licences/mathematiques)
+##### *[Paris-Dauphine University](https://dauphine.psl.eu/formations/licences/mathematiques)*
 
 --- 
 

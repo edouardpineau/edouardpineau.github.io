@@ -1,6 +1,6 @@
 ## About me
 
-I'm a PhD student at [https://www.ip-paris.fr/en/home-en/](Institut Polytechnique de Paris), supported by the company [https://www.safran-group.com/](Safran) through the CIFRE convention 2017/1317. 
+I'm a PhD student at [Institut Polytechnique de Paris](https://www.ip-paris.fr/en/home-en/), working in the [DIG research group](https://dig.telecom-paris.fr/blog/) under the supervision of Thomas Bonald. The thesis is supported by the company [Safran](https://www.safran-group.com/) through the CIFRE convention 2017/1317. 
 
 ### Education
 

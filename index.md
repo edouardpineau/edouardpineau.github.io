@@ -4,11 +4,19 @@ I'm a PhD student at [Institut Polytechnique de Paris](https://www.ip-paris.fr/e
 
 ### Education
 
-[Project 1 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+##### 2017-2020: PhD Computer Science
+[Institut Polytechnique de Paris](https://www.ip-paris.fr/en/home-en/)
 
----
+##### 2016-2017: Msc Machine Learning
+[Paris-Dauphine University & ENS Paris-Saclay](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-mathematiques-apprentissage-sciences-humanites)
 
-### Recent works
+##### 2014-2016: Msc Applied Mathematics and Statistics for Financial Engineering
+[Paris-Dauphine University](https://dauphine.psl.eu/formations/masters/mathematiques-et-applications/m2-ingenierie-statistique-et-financiere)
 
-- [Project 1 Title](http://example.com/)
+##### 2010-2013: Bsc Applied Mathematics and Economics
+[Paris-Dauphine University](https://dauphine.psl.eu/formations/licences/mathematiques)
+
+### Recent research works
+
+##### Seq2VAR
+

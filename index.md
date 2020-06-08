@@ -16,7 +16,15 @@ I'm a PhD student at [Institut Polytechnique de Paris](https://www.ip-paris.fr/e
 #### 2010-2013: Bsc Applied Mathematics and Economics
 ##### [Paris-Dauphine University](https://dauphine.psl.eu/formations/licences/mathematiques)
 
-## Recent research works
+## Recent published research
 
-##### Seq2VAR
+#### [Seq2VAR: multivariate time series representation with relational neural networks and linear autoregressive model](https://link.springer.com/chapter/10.1007/978-3-030-39098-3_10)
+
+#### [Variational Recurrent Neural Networks for Graph Classification](https://rlgm.github.io/papers/9.pdf)
+
+#### [A simple baseline algorithm for graph classification](https://arxiv.org/abs/1810.09155)
+
+
+## Ongoing research work 
+
 

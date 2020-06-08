@@ -56,18 +56,18 @@ A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.0073
 ## Work experience
 
 #### Data analyst
-##### *Safran Research and technology*
+##### *[Safran Research and technology](https://www.safran-group.com/media/20140204_new-safran-rt-center)*
 ---
 
 #### Equity and derivatives assistant portfolio manager
-##### *Rivage Investment*
+##### *[Rivage Investment](https://www.rivageinvestment.com/index.php#1)*
 
 ---
 
 #### Derivatives and structured assistant portfolio manager
-##### *Allianz Global Investors*
+##### *[Allianz Global Investors](https://www.allianzgi.com/)*
 
 ---
 
 #### Performance and risk analyst
-##### *Rothschild & Co*
+##### *[Rothschild & Co](https://www.rothschildandco.com/)*

@@ -24,7 +24,3 @@ I'm a PhD student at [Institut Polytechnique de Paris](https://www.ip-paris.fr/e
 
 #### [A simple baseline algorithm for graph classification](https://arxiv.org/abs/1810.09155)
 
-
-## Ongoing research work 
-
-

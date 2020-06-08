@@ -32,7 +32,7 @@ I'm a PhD student at [Institut Polytechnique de Paris](https://www.ip-paris.fr/e
 
 #### [Variational Recurrent Neural Networks for Graph Classification](https://rlgm.github.io/papers/9.pdf)
 
-**Short abstract**: graph can be seen as sequences of nodes. With node ordering methods and sequence modeling tools, we can greedily learn representation of graphs for classification. 
+**Short abstract**: graph can be seen as sequences of nodes. With node ordering methods and recurrent neural networks (i.e. neural networks made for sequence modeling), we can greedily learn representation of graphs for classification. 
 
 --- 
 

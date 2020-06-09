@@ -46,7 +46,7 @@ I'm interested in recent advances in representation learning with neural generat
 
 A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.00735.pdf). 
 
-## Submitted research
+## Ongoing research
 
 #### Trend detection in time series for health monitoring of mechanical systems (patent and paper)
 
@@ -72,3 +72,4 @@ A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.0073
 
 #### Performance and risk analyst
 ##### *[Rothschild & Co](https://www.rothschildandco.com/)*
+

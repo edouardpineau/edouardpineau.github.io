@@ -26,7 +26,7 @@ I'm interested in recent advances in representation learning with neural generat
 
 --- 
 
-## Recent research
+## Recent public research
 
 #### [Seq2VAR: multivariate time series representation with relational neural networks and linear autoregressive model](https://link.springer.com/chapter/10.1007/978-3-030-39098-3_10)
 

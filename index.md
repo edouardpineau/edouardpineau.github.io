@@ -26,7 +26,7 @@ I'm interested in recent advances in representation learning with neural generat
 
 --- 
 
-## Recent public research
+## Recent published research
 
 #### [Seq2VAR: multivariate time series representation with relational neural networks and linear autoregressive model](https://link.springer.com/chapter/10.1007/978-3-030-39098-3_10)
 
@@ -48,11 +48,11 @@ A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.0073
 
 ## Ongoing research
 
-#### Trend detection in time series for health monitoring of mechanical systems (patent and paper)
+#### Trend detection in time series (submitted patent and paper)
 
-#### Representation of multivariate time series on causality graphs (paper)
+#### Representation of multivariate time series on a causality graph (submitted paper)
 
-#### Structural components extraction from time series data (paper)
+#### Structural components extraction from time series data (submitted paper)
 
 ## Work experience
 

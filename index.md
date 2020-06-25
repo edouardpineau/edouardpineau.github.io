@@ -52,7 +52,7 @@ A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.0073
 
 #### Representation of multivariate time series on a causality graph (submitted paper)
 
-#### Structural components extraction from time series data (submitted paper)
+#### Time series source separation using slowness (submitted paper)
 
 ## Work experience
 

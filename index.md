@@ -52,6 +52,8 @@ I'm interested in recent advances in representation learning with neural generat
 
 A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.00735.pdf). 
 
+--- 
+
 ## Ongoing research
 
 #### Trend detection in time series (submitted patent and paper)

@@ -32,6 +32,8 @@ I'm interested in recent advances in representation learning with neural generat
 
 **Short abstract**: we show that slow feature analysis (SFA), a common time series decomposition method, naturally fits into the flow-based models (FBM) framework, a type of invertible neural latent variable models trained by exact maximum likelihood. Building upon recent advances on blind source separation, we show that such a fit makes the time series decomposition identifiable.
 
+--- 
+
 #### [Seq2VAR: multivariate time series representation with relational neural networks and linear autoregressive model](https://link.springer.com/chapter/10.1007/978-3-030-39098-3_10)
 
 **Short abstract**: linear vector autoregressive models (VAR) are common multivariate time series (MTS) modeling tools. In particular, sparifying VAR models enable to extract information about causality underlying the data. Yet, when we have a large dataset of MTS, fitting a sparse VAR in each sample is not tractable. We propose to leverage de recent advances on time series representation with relational neural network to show that we can robustly and efficiently extract linear causality from MTS samples. 

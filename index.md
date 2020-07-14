@@ -28,7 +28,7 @@ I'm interested in recent advances in representation learning with neural generat
 
 ## Recent published research
 
-#### Time series source separation with slow flows
+#### [Time series source separation with slow flows](https://invertibleworkshop.github.io/accepted_papers/pdfs/9.pdf)
 
 **Short abstract**: we show that slow feature analysis (SFA), a common time series decomposition method, naturally fits into the flow-based models (FBM) framework, a type of invertible neural latent variable models trained by exact maximum likelihood. Building upon recent advances on blind source separation, we show that such a fit makes the time series decomposition identifiable.
 

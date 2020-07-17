@@ -58,7 +58,7 @@ A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.0073
 
 #### Trend detection in time series (submitted patent and paper)
 
-#### Representation of multivariate time series on a causality graph (submitted paper)
+#### Unsupervised ageing detection on a causality graph (submitted paper)
 
 ## Work experience
 

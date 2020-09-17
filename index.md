@@ -28,6 +28,12 @@ I'm interested in recent advances in representation learning, with particular fo
 
 ## Recent published research
 
+#### Unsupervised ageing detection on a causality graph
+
+**Short abstract**: multivariate time series (MTS) have specific features that complicate their analysis: interactions in space and time between the MTS components, variable length, absence of trivial alignment between samples and high dimensionality. Hence, finding a representation of MTS from which we can extract meaningful information is a challenging task. In general, specific assumptions are needed to obtain a valuable representation. In this paper, we assume that a dataset of MTS samples has an underlying causal structure that we can exploit to represent samples. Our contribution is a new representation framework that consists of first finding the overall causality graph G in a studied dataset and then mapping each sample onto G to obtain a causality-based representation. Since causality is an important feature underlying MTS data, we claim and show that representating samples on G is meaningful. We apply our model on health monitoring tasks, using two MTS datasets coming from ageing mechanical systems.
+
+---
+
 #### [Time series source separation with slow flows](https://invertibleworkshop.github.io/accepted_papers/pdfs/9.pdf)
 
 **Short abstract**: we show that slow feature analysis (SFA), a common time series decomposition method, naturally fits into the flow-based models (FBM) framework, a type of invertible neural latent variable models trained by exact maximum likelihood. Building upon recent advances on blind source separation, we show that such a fit makes the time series decomposition identifiable.
@@ -56,9 +62,9 @@ A deeper analysis of the results is given [here](https://arxiv.org/pdf/1912.0073
 
 ## Ongoing research
 
-#### Trend detection in time series (submitted patent and paper)
+#### Trend detection in time series (patent and paper)
 
-#### Unsupervised ageing detection on a causality graph (submitted paper)
+#### Music style transfer
 
 ## Work experience
 

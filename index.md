@@ -28,7 +28,7 @@ I'm interested in recent advances in representation learning, with particular fo
 
 ## Recent published research
 
-#### Unsupervised ageing detection on a causality graph
+#### [Unsupervised ageing detection on a causality graph](https://hal.archives-ouvertes.fr/hal-02959268/document)
 
 **Short abstract**: we assume that a dataset of multivariate time series (MTS) has an underlying causal structure that we can exploit to represent samples. Our contribution is a new representation framework that consists of first finding the overall causality graph G in a studied dataset and then mapping each sample onto G to obtain a causality-based representation. Since causality is an important feature underlying MTS data, we claim and show that representating samples on G is meaningful. We apply our model on health monitoring tasks, using two MTS datasets coming from ageing mechanical systems.
 

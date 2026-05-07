@@ -1,0 +1,649 @@
+\documentclass{article}
+
+\usepackage[a4paper, total={5.7in, 9in}]{geometry}
+\linespread{1.3}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{stmaryrd}
+\usepackage{lineno}	% line numbers
+\usepackage[colorinlistoftodos]{todonotes} % comments
+\usepackage{comment}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{tabu}
+\usepackage{booktabs}% for better rules in the table
+
+\usepackage{colortbl,dcolumn}
+
+\def\zz#1{%
+\ifdim#1pt<5pt\cellcolor{green}\else
+\ifdim#1pt<50pt\cellcolor{yellow}\else
+\cellcolor{red}\fi\fi
+#1}
+
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+
+\newtheorem{remark}{Remark}
+
+\title{Assessment of the sensitivity of transition matrices to carbon price with value chain effect}
+
+\author{
+  Edouard Pineau \footnote{Corresponding author: edouard.pineau@ethifinance.com} \\
+  \texttt{EthiFinance Analytics}\\
+  \and
+  Elizabeth Zu\~{n}iga \footnote{Corresponding author: elizabeth.zuniga@ethifinance.com} \\
+  \texttt{EthiFinance Analytics}\\
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    \noindent In the context of the transition to a low-carbon economy, the creditworthiness of banks' corporate debtors may deteriorate due to the degradation of their corporate exposure, due to a dual effect. First, the macro-financial environment may change due to coercive regulations and the resulting unavoidable higher investment costs, which indirectly affects the creditworthiness of companies. Second, transition costs paid directly by companies (e.g., the price of carbon) may reduce their short-term income and thus their ability to repay their debts. Both of these effects change the structure of corporate creditworthiness, summarized in the rating transition matrices. While banks already manage forward-looking macro-financial risks to meet regulatory stress testing exercises and are therefore already prepared to incorporate the indirect effect into their forward-looking credit risk management, the direct effect of sector-dependent climate transition costs requires new methodologies. In this paper, we propose a method to assess the effect of climate transition cost trajectories on corporate transition matrices, taking into account the diffusion of risk across the geo-sectoral value chain defined with a Leontief input-output model. As an illustration, we apply our method to US corporate rating transition matrices. 
+\end{abstract}
+
+\noindent \keywords{Climate transition risk, input-output models, value chain, carbon price, stress test, transition matrices}
+
+\vspace{0.3cm}
+
+\noindent \underline{JEL}: C67, E22, E47, G32, Q54
+
+\section{Introduction}
+
+Climate change is one of the most significant challenges facing humanity today \cite{caldeira2003anthropogenic}. It is increasingly recognized that the transition to a low-carbon economy is essential to limit global warming, thereby mitigating the impact of climate change \cite{campiglio2016beyond}. This transition will require significant changes in the way we produce and consume energy, and will have far-reaching economic implications.
+
+\vspace{0.1cm}
+
+Greenhouse gases (GHGs) emitted by economic activities are the primary cause for the abnormal increase in global temperatures, and their reduction are more so a major indicator of the transition towards a sustainable economy and a tool to lead the politics of change. International agreements like the Paris Agreement set GHG emission targets for the international community. For example, countries set Nationally Determined Contributions (NDCs) to meet the goal of limiting global warming to below 2Â°C by 2100. %NDCs can be adjusted to achieve carbon neutrality as quickly as possible. 
+Notably, around two-thirds of the NDCs incorporate the implementation of a carbon price mechanism. The primary goal of this pricing strategy is to hold emitters responsible for the externalities induced by greenhouse gases (also known as the \textit{social cost of carbon} \cite{tol2011social}). The concept of carbon pricing pre-dates the Paris Agreement, as demonstrated by the introduction of an emission trading scheme (ETS) within the European Union (EU) in 2005 \cite{ellerman2008european}. In this scheme, carbon is assigned a market value, determined by the exchanges between companies operating in highly emitting sectors. In the EU, price is based on a quantity allocated by the Member States through a national allocation plan \cite{zetterberg2004analysis}. The quantity of allowances available to the market decreases each year, % (for instance, France reduces it by 1.74\% annually during the period 2013-20), 
+with the ultimate goal of eliminating allowances entirely. Besides the EU-ETS, national or sub-national systems are already operating or under development in Canada, China, Japan, New Zealand, South Korea, Switzerland and the United States \cite{nachtigall2021economic}. This circumstance, along with increasingly stringent regulations, has resulted in a significant increase in carbon pricing. Based on projections aimed at limiting the temperature rise to below 2Â°C by 2100, carbon prices are expected to continue to rise, reaching levels that will be highly penalizing for carbon-intensive industries \cite{ngfs2021scenarios}. In addition, higher carbon prices can lead to global inflation, first in the fossil fuel supply chain and then in the entire price-production value chain \cite{moessner2022effects}. 
+
+\vspace{0.1cm}
+
+The impact of carbon regulations on businesses has naturally raised concerns about their ability to cope with the escalating costs of transitioning to a low-carbon economy, particularly in the face of an inflationary carbon market. As transition costs (such as carbon pricing) rise, we can see two plausible effects. First, the revenues of emitting firms are likely to decline, leading to a decline in their creditworthiness. Second, given the interdependence between industries and depending on the pricing power of sectors, even low-emitting sectors who rely on carbon-intensive industries may be affected by increased carbon pricing, with inflation transmitted along the value chain network.
+
+
+\vspace{0.1cm}
+
+Banks, which finance many potentially affected industries, are likewise exposed to climate transition risk born by companies, as increases in the carbon price can affect their credit exposure and capital values. The Basel Committee on Banking Supervision recently created a Task Force on Climate-Related Financial Risks to address this new macro-financial risk, and to enhance financial stability. Its research has, for example, mapped climate-related financial risks \cite{basel2021drivers}, surveyed Basel Committee members to learn about their various initiatives on this subject \cite{basel2020climate}, or identified their associated methodologies \cite{basel2021climate}. To manage climate transition risk, banks will need to take a range of steps \cite{brunnermeier2020central}, including: developing climate risk strategies 
+%(to identify, measure, and manage climate transition risk)
+, conducting stress tests 
+%(to understand the potential impact of different climate scenarios on their portfolios)
+, engaging with clients 
+%(to encourage them to transition to more sustainable business models)
+, investing in sustainability 
+%(including reducing their own carbon footprint and promoting sustainable business practices) 
+and collaborating with stakeholders. 
+%(banks should collaborate with regulators, policymakers, and other stakeholders to promote a coordinated approach to addressing climate transition risk). 
+
+\vspace{0.1cm}
+
+In this context, regulators have required banks and insurance companies to perform climate stress tests (CST) to evaluate their resilience to climate-related risks of their portfolios, and identify potential vulnerabilities (see the timeline in Figure \ref{fig:timeline}). 
+Climate stress tests are designed to evaluate the resilience of financial institutions to climate-related risks and to identify potential vulnerabilities. An overview of the principle of a climate stress test for the global financial system is for example given in \cite{monasterolo2020climate}. Regulatory stress tests are based on the projection of macro-financial variables, based on a narrative. For the CST organized by the European Central Bank (ECB) in 2022 \cite{ecb2021climate}, the regulator used the scenarios and macro-financial trajectories of the Network for Greening the Financial System (NGFS) \cite{ngfs2021scenarios}, based on climate transition narratives proposed by the Intergovernmental Panel on Climate Change (IPCC). In these scenarios, the evolution of macro-financial variables is directly linked to the increase in carbon and fossil fuel prices, showing an environment of high and increasing transition costs. In particular, regulators split the effects of transition costs into \textit{indirect effects} throughout macro-financial variables trajectories, and \textit{direct effects} when the cost is paid directly by companies. We find in the ECB's CST methodological document \cite{ecb2021climate} that:
+
+\vspace{0.1cm}
+
+\textit{``For the projections of the credit risk parameters, banks are asked to consider both (i) the direct impact of the shock on their counterparties (e.g. rising costs due to the increasing carbon price), and (ii) the impact from the changes in the macro variables that accompany the carbon price shock (e.g. lower aggregate demand), which are given as part of the scenario"}
+
+\vspace{0.1cm}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{Figures TM/regulators_climate.png}
+    \caption{A chronology of important financial regulators' texts and exercises related to the management of climate risks borne by financial institutions.}
+    \label{fig:timeline}
+\end{figure}
+
+\vspace{0.1cm}
+
+Banks already manage forward-looking macro-financial risks to meet regulatory stress testing exercises \cite{eba2021stress}, and are thus already prepared to incorporate the indirect effect into their forward-looking credit risk management. However, the direct effect of sector-dependent incremental costs requires new methodologies. 
+
+\vspace{0.1cm}
+
+In our paper, we focus on corporate exposure of banks. We propose a model to estimate the sensitivity of corporate rating transition matrices (TMs) related to a change in the carbon price paid. TMs are key measures for credit risk management in banks and are used to assess the regulatory capital of banks as defined in the Basel Accord \cite{basel2011global}. To do so, we combine a Leontief input-output model to diffuse the cost of carbon across the value chain of the economy and a model to represent TMs with low-dimensional factors. We obtain a new end-to-end model to generate stressed TMs from carbon price trajectories projected by the NGFS for several climate transition scenarios. We adjust the effect of carbon with a coefficient computed from the trajectories of carbon intensity, which depends on the scenario. As an illustration, we run the NGFS carbon price trajectories through our model to assess the sensitivity of US TMs to the direct transition price of carbon. We note that our model can be generalized to any additional cost associated with climate change mitigation, such as energy prices. % To the best of our knowledge, our end-to-end assessment model of TMs' sensitivity to carbon price (and more generally to any direct transition cost) with value chain effect is the first of its kind. 
+
+\vspace{0.1cm}
+
+Our paper is structured as follows. Section \ref{sec:definitions} presents important definitions. Section \ref{sec:key_elements} details the different elements from which we build our end-to-end approach, which relates additional costs to the geo-sectoral TMs of banks exposure. Related work is presented in Section \ref{sec:related_work}. Finally, we illustrate our approach on US transition matrices in Section \ref{sec:experiments} using the data presented in Section \ref{sec:data}. 
+
+\section{Important definitions}
+\label{sec:definitions}
+
+\noindent \textbf{Greenhouse gas emissions (GHGs)} are the emissions of gases that contribute to the greenhouse effect and climate change as a result of human economic activities. %These gases include carbon dioxide (CO2), methane (CH4), nitrous oxide (N2O), and fluorinated gases, such as hydrofluorocarbons (HFCs) and sulfur hexafluoride (SF6).
+GHG emissions related to economic activities arise from a wide range of sources, including the burning of fossil fuels for energy production, transportation, and industrial processes, as well as from agricultural activities, deforestation, and waste management. The quantity of GHG emitted by economic activities will depend on the industrial sector. A climate feature of sectors is the \textit{GHG intensity}, which is the quantity of GHG emitted divided by the production (e.g., the monetary value-added) generated by the activity. GHG emissions are categorized into three scopes: 1) direct emissions from production activities, 2) indirect emissions from imported electricity, heat or steam, and 3) all other indirect emissions. The majority of emissions fall under scope 3. We note that the scopes 2 and 3 of the production at a certain moment and location are the scope 1 of the production at another moment and/or location. The diffusion of the scope 1 emissions across the value chain transforms it into scopes 2 and 3. Hence, knowing the value chain of the economy enables us to compute the scopes 2 and 3 from scope 1 taking into account the dependencies between production activities \cite{meng2018tracing}.
+
+\vspace{0.3cm}
+
+\noindent \textbf{Carbon pricing} is an instrument that aims to address the negative externalities of GHG emissions (known as \textit{social carbon cost} \cite{change2014synthesis}). GHG emitters must decide whether to pay a carbon price or to reduce their emissions. The \textit{Emissions Trading Scheme} (ETS) is a cap-and-trade system that establishes a market price for carbon. A \textit{voluntary offset mechanism} enables companies or states to reduce their emissions by financing a carbon reduction or sequestration project. The \textit{internal carbon price} is a price integrated by companies into their economic model. The explicit or implicit determinants of the carbon price include institutional decision, energy price and weather influence, as well as macroeconomic and financial shocks \cite{chevallier2013carbon}. A large and sudden increase in the carbon price, as assumed within the ECB's short-term CST scenario or in the NGFS scenarios, is plausible and may have important implications for banks \cite{chevallier2013carbon}.
+
+\vspace{0.3cm}
+
+\noindent \textbf{Climate transition risk} refers to the financial risks that may arise from the transition to a low-carbon economy. These can stem from potential impacts of policies, regulations, significant investments, technological changes and consequently the financial performance and creditworthiness of economic activities \cite{masson2022global}. For example, policies aimed at reducing GHG emissions, such as carbon taxes or ETS, may increase the cost of carbon-intensive activities, and decrease the value of carbon-intensive assets. Similarly, advances in renewable energy technologies, may render fossil fuel assets stranded and lead to significant write-downs. As governments and companies worldwide take steps to reduce GHG emissions and shift towards a more sustainable business models, there are likely going to be significant impacts to the financial system. 
+Banks are exposed to climate transition risks, as they provide financing and investment services to industries and companies that may be impacted by this shift. This can result in significant write-downs and losses for carbon-intensive companies, leading to increased credit risk and non-performing loans for banks. Banks that fail to address the climate transition risk may also face reputational damage, leading to a loss of customers and market share. Regulatory risk for banks may also increase as governments address climate change such as through increased capital requirements for carbon-intensive investments. However, opportunities may also arise for banks that are able to manage climate transition risk effectively, such as financing for renewable energy projects and green bonds.
+
+\vspace{0.3cm}
+
+\noindent \textbf{Transition risk climate stress testing (CST)} is a type of stress testing that focuses on assessing the financial risks and resilience of institutions and systems to the transition towards a low-carbon economy. Transition risk CST involves the development of a range of scenarios that reflect different pathways to a low-carbon economy. These scenarios may include different levels of policy ambition, technological progress, socio-economic trajectories, market preferences and climate-related assumptions (e.g., global temperature rise and its impacts, carbon price, etc.). The aim is to assess the potential impact of these scenarios on financial performance, creditworthiness, and the resilience of the entity being tested. For example, the NGFS transition scenarios \cite{ngfs2021scenarios} are a set of four plausible pathways that describe how the global economy could transition to a low-carbon future: disorderly transition, delayed transition, orderly transition and chaotic transition. Each scenario is generated along with a carbon price trajectory. As in standard macro-financial regulatory stress tests, banks are required to stress their TMs with the scenarios \cite{schuermann2014stress}, and in particular with the additional costs related to the climate transition of the economy \cite{ecb2021climate}. 
+
+
+\section{Key elements of our approach}
+\label{sec:key_elements}
+
+We want to assess the sensitivity of rating  transition matrices (TMs), to direct climate transition costs paid by companies (e.g., costs related to the carbon price). To do so, we need a function that relates factors that can be stressed with climate transition costs, to TMs. Moreover, the heterogeneity of sector vulnerability to climate transition costs requires a sectoral decomposition of risk. We decompose our approach into four key elements that are presented in the following subsections. 
+
+\subsection{A factorial representation of rating transition matrices}
+\label{sec:factor_represetation_tm}
+
+A rating TM is a table that shows at what rate the credit ratings of entities (such as companies, countries, or financial instruments) have changed over time. %The TM typically shows the starting rating of an entity and the rating it has been assigned at a later point in time. The table can be used to track changes in credit quality and to analyze trends in credit risk. 
+TMs contain lot of information about the creditworthiness of the counterparts of debt creditors, and their credit stability over time. For a rating scale containing $K$ plots ($K-1$ performing ratings, and one default rating), a TM lives into $[0,1]^{(K-1)\times K}$, hence in a relatively high-dimensional space. The reduction of TMs into low-dimensional generative factors that can be related to transition costs first requires the definition of a model that respects the TM's main features: positive entries and rows summing to $1$. 
+
+\vspace{0.3cm}
+
+
+In \cite{morgan1997creditmetrics}, the authors propose a one-parameter representation of TMs, used in several stress test models (e.g., \cite{schuermann2014stress,garnier2021climate}). It consists of two main steps. First, they transform the TMs into matrix $L$ as follows:
+
+\begin{align}
+\label{eq:TM}
+    TM^{i,j}=\Phi(L^{i,j})-\Phi(L^{i,j+1}) \Longleftrightarrow L^{i,j}=\Phi^{-1}\left(\sum_{k=K}^j{TM^{i,k}}\right) 
+\end{align}
+
+\noindent where $\Phi$ is the cumulative distribution function of the standard Gaussian distribution, $TM^{i,j}$ is the transition rate from rating $r_i$ to rating $r_j$. Hence $L^{i,j}$ represents a threshold under which the rated asset jumps from rating $r_i$ to a rating in $\llbracket r_j, r_K \rrbracket$, with $r_K$ the last (default) rating. We must be careful with condition at limits (clipping the probabilities to avoid infinite factor values in $L$), as done in \cite{engelmann2021simple}. 
+
+\vspace{0.3cm}
+
+Then, using a multi-factor Merton-Vasicek with general correlation matrix as in \cite{li2000default}, the log asset value $X^{(b)}$ of a borrower $b$ is determined by both systemic (macro-financial) factors $Z$ and an idiosyncratic factor $\epsilon$ such that 
+
+\begin{align}
+    X^{(b)}=a^T.Z+\sqrt{1-a^T.\Sigma.a}\epsilon^{(b)}
+\label{eq:multi_merton}
+\end{align}
+
+\noindent where $\epsilon^{(b)}$ and $Z$ are independent. $a \in \mathbb{R}^{n_f}$ are the factor loadings, $\Sigma \in [-1,1]^{n_f\times n_f}$ is the correlation between risk factors. 
+
+Finally, we assume that a borrower with rating $r_i$ migrates to rating in $\llbracket r_j, r_K \rrbracket$ if $X^{(b)} \leq L^{i,j}$, i.e.:
+
+\begin{align}
+    \epsilon^{(b)} \leq \frac{L^{i,j} - a^T.Z}{\sqrt{1-a^T.\Sigma.a}}
+    \label{eq:epsilon_migration}
+\end{align}
+
+Since Merton-Vasicek assumes that the idiosyncratic risk is standard Gaussian, by mixing equations \eqref{eq:TM} and \eqref{eq:epsilon_migration} we obtain a model to generate TMs from factors $Z$ defined as:
+
+\begin{align}
+    TM^{i,j}(Z;L) = \begin{cases} 1 - \Phi(\frac{L^{i,2} - a^T.Z}{\sqrt{1-a^T.\Sigma.a}}) \text{ if } j=1\\ 
+                                \Phi \left(\frac{L^{i,j} - a^T.Z}{\sqrt{1-a^T.\Sigma.a}}\right) - \Phi \left(\frac{L^{i,j+1} - a^T.Z}{\sqrt{1-a^T.\Sigma.a}}\right) \text{ if }j \in \llbracket 2, K-1 \rrbracket \\
+                                \Phi \left(\frac{L^{i,K} - a^T.Z}{\sqrt{1-a^T.\Sigma.a}}\right) \text{ if } j=K
+                                \end{cases}
+\label{eq:conditional_TM}
+\end{align}
+
+We assume that we observe \textit{point-in-time} (PiT) TMs, denoted $TM^{PiT}_t$, for $t \in [0, T]$. From these historical TMs we can compute a long-term \textit{through-the-cycle} (TTC) transition matrix, denoted $TM^{TTC}$. TTC matrix is computed as the sum of all the historical transitions, rescaled to be a TM. TTC is supposed to represent a rating TM related to a mean position in the economic cycle. 
+The details of the matrices are given in Section \ref{sec:data}. 
+
+\vspace{0.1cm}
+
+Using the one-parameter representation given above, we can represent the PiT transition matrices with factors $Z$ by solving the problem:
+
+\begin{align}
+    Z=\arg \min_{Z} \int_{t=0}^T {\left\| \left(TM^{PiT}_t-TM(Z_t;L^{TTC})\right) \right\|_F^2}
+    \label{eq:shift_problem}
+\end{align}
+
+\noindent where $L^{TTC}$ is derived from $TM^{TTC}$ using equation \eqref{eq:TM}, and $\|.\|_F$ is the Frobenius norm. With a factor $Z^s_t$ computed for a scenario $s$ at time $t \geq T$, we can generate a TM denoted $TM^s_t$. 
+
+\subsection{Leontief sectoral breakdown of the economy}
+\label{sec:leontief}
+
+We remind that we focus on corporate exposure of banks, hence emphasizing the stress born by companies, and consequently by banks in their corporate portfolios. Compared to traditional macro-financial stress tests, the CST requires a sectoral breakdown of risks due to the heterogeneity of sector vulnerability to climate transition costs.
+We propose to use a standard framework to model this sectoral decomposition of the economy: the Leontief input-output (IO) model \cite{leontief1949structural}. 
+
+\vspace{0.1cm}
+
+Leontief's IO model is a mathematical model used to analyze the interdependence of different locations and/or sectors in an economy. For simplicity, we call \textit{sector} the couple \textit{location-sector}, and for a better readability, we present the results summed at GICS-1 sectoral level (see Section \ref{sec:data} for details). Suppose there are $n$ sectors in an economy, and we have a vector of outputs from each sector denoted by $X = (x_1, x_2, ..., x_n)$, sold at price $P=(p_1, \dots, p_n)$. Let A be the $n\times n$ matrix of input-output coefficients, where $a_{ij}$ represents the amount of input $i$ needed to produce one unit of output $j$. The Leontief input-output model can be expressed mathematically as in \cite{marangoni2000leontief}:
+\begin{align}
+    X = AX + Y \Longleftrightarrow P=A^T P + V
+\label{eq:leontief_open}
+\end{align}
+
+\noindent where $Y$ is a vector of final demand for the goods and services and $V$ is the value-added (VA) produced by the $n$ sectors. %We remind that the VA equals the difference between an industryâ€™s gross output (consisting of sales or receipts and other operating income, commodity taxes, and inventory change) and the cost of its intermediate inputs (including energy, raw materials, semi-finished goods, and services that are purchased from all sources). 
+The equation \eqref{eq:leontief_open} states that the total output of each sector, $X$, is equal to the sum of the inputs required to produce that output, $AX$, plus the final demand for that output, $Y$. It also states that prices are formed by the sum of the input prices, $A^T P$, plus the final value-added created by the industry. If we denote $x_{ij}$ the quantity sold by the sector $i$ to sector $j$, we can infer the entries of matrix $A$ as $A_{ij}=x_{ij}/x_j$. From \eqref{eq:leontief_open} we obtain:
+
+\begin{align}
+    X = BY \Longleftrightarrow P=B^T V
+\label{eq:leontief_close}
+\end{align}
+
+\noindent where $B:=(I-A)^{-1}$ is called the \textit{Leontief inverse}. The entries $B_{ij}$ represent the impact of a change in final demand in the $j^{th}$ sector on the $i^{th}$ sector's production, or in final value-addedof the $i^{}th$ sector on the $j^{th}$ sector's unitary price. The model depicts inter-industry relationships within an economy, showing how output from one industrial sector may become an input to another industrial sector. 
+
+\begin{remark}
+In \cite{bartolucci2020inversion}, authors give an interpretation of Leontief inverse matrix $B$. First, they note that $B=(I-A)^{-1}=\sum_{k=0}^\infty A^k$. Hence, the Leontief inverse $B$ contains all the input-output cycles until infinity, hence fully taking into account the dynamical aspect of the input-output model. If demand $Y$ increases, the production needs to adapt at first degree, i.e., increase by $IY$. Then, to meet their production increase $IY$, sectors demand inputs from economy, hence demand $AY$ (a first tour of the economy). To meet this new demand, sectors need to produce $A^2Y$, and so on. This modeling phenomena is called a cascade sectoral network \cite{cahen2021capital}. 
+\end{remark}
+
+\vspace{0.3cm}
+
+\noindent In Figure \ref{fig:AB_leontief_fra} we can see an example of matrices $A$ and $B$ at GICS-1 sectoral level estimated using the FIGARO database (see Section \ref{sec:data} for details).  
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.525\textwidth]{Figures TM/A_leontief.png}
+    \includegraphics[width=0.465\textwidth]{Figures TM/B_leontief.png}
+    \caption{Matrices $A$ and $B$ represent the sectoral dependency between the USA and the World (USA included), presented at GICS-1 level.}
+    \label{fig:AB_leontief_fra}
+\end{figure}
+
+\subsection{Diffusion of transition costs across the sectoral value chain}
+\label{sec:transition_costs_leontief}
+
+To have a sectoral breakdown of the effects of climate transition costs in the rating TMs, we use the Leontief framework as in \cite{gemechu2014economic,mardones2020economic,adenot2022cascading}. These papers are presented in Section \ref{sec:related_work}. 
+
+\vspace{0.3cm}
+
+The direct GHG intensities (see definition in Section \ref{sec:definitions}) of the economy, by sector (or couple location-sector), related to the production of VA, is denoted $G=(g_1, \dots, g_n)$ for the $n$ sectors. At sectoral-level, we do not know how the intensity will evolve on the different scenarios. Yet, we know from the NGFS trajectories (presented in Section \ref{sec:data}) that the global intensity of the economy will change over time, at a rate that depends on the scenario. We can approximate the evolution of GHG intensity for the $n$ sectors by assuming that they all evolve at an equal rate, which would also be the global rate. We note $c_t^s$ the global carbon intensity coefficient at time $t \geq T$ for scenario $s$, computed as the ratio of the starting point intensity (computed at time $T$) and the projected intensities computed from the GDP and GHG emissions trajectories. Hence the starting point coefficient $c_T^s$ is equal to $1$ for all scenarios and evolves according to the trajectories of the scenarios. The intensity coefficient trajectories are shown in Figure \ref{fig:intensity_coefs} in Section \ref{sec:data}. Using these coefficients, $G_t^s:=(c_t^s g_1, \dots, c_t^s g_n)$ is therefore a plausible sectoral intensity vector at time $t$ for scenario $s$. % than a constant intensity $G$ as assumed for example in \cite{adenot2022cascading}.
+
+\begin{remark}
+    We note that if we had sectoral trajectories, we could compute sectoral coefficients $c_t^s=(c_t^{(s,1)}, \dots, c_t^{(s,n)})$, such that $G_t^s:=(c_t^{(s,1)}, \dots, c_t^{(s,n)})$ would be an even more plausible intensity vector at time $t$ for scenario $s$.
+\end{remark}
+
+Hence, for a scenario $s$ at time $t$, using Leontief model we define the GHG intensities both produced and imported throughout the value chain as $M_t^s = B^T G_t^s$. This intensity then is composed of the direct emissions (scope 1), the indirect emissions from imported energy and heat (scope 2) and the upstream emissions from imported product demanded by the production process (scope 3 upstream). These three categories can be complemented with the direct emissions of final demand (e.g., direct emissions in households related to the usage of the production of each sector) (scope 3 downstream) \cite{hasegawa2015carbon}. Yet, the sectoral direct GHG intensity of final demand is more difficult to estimate and is not directly related to the production process, even if final demand is a necessary condition of production. Hence, we do limit our model to scope 1, scope 2 and scope 3 upstream. We note that if we have the appropriate data, we can compute one sectoral intensity vector per location of imported production. 
+
+\vspace{0.3cm}
+
+We apply a carbon tax per ton of emitted GHG, denoted $\tau_t^s$, and then $\eta_t^s=\tau_t^s M_t^s$, being the vector of sectoral carbon tax per unit of production. %We note that we can apply a specific rate for each sector, for example considering the carbon leakage tax reduction (directive 2019/708/UE), to reduce the effects of carbon tax. 
+The tax $\eta_t^s$ applies on the full production (hence the full price). The new model becomes $P=(1+\eta_t^s)[A^T P+V]$, then:
+
+\begin{align}
+    P\left(\tau_t^s\right)=(I-A(\tau_t^s)^T )^{-1}V
+\end{align}
+
+\noindent where
+\begin{align}
+    A\left(\tau_t^s \right) = \begin{cases} a_{ij} \text{ if } i \neq j \\
+    a_{ii} + \left(1-\frac{1}{1+\eta_{t,i}^s}\right)
+    \end{cases}
+\label{eq:A_carbon}
+\end{align}
+
+\noindent Hence $P\left(\tau_t^s \right)=B\left(\tau_t^s \right) V$, with $B\left(\tau_t^s\right):=\left( I - A\left(\tau_t^s \right)^T \right)^{-1}$. In \cite{mardones2020economic}, under the assumption that the monetary value of the final demand remains constant and that the price elasticity of demand of all sectors is constant, the carbon price affects the total consumption hence the production at rate
+
+\begin{align}
+    R_i(\tau_t^s):=\frac{x_i(\tau_t^s)}{x_i} = \gamma_i \frac{p_i}{p_i(\tau_t^s)}
+\label{eq:production_price_ratio}
+\end{align}
+
+\noindent where $x_i\left(\tau_t^s\right)$ is the production of sector $i$ after the introduction of sectoral carbon taxes $\eta_t^s$, $\gamma_i$ is an elasticity price-production for sector $i$. This last parameter can be determined from \textit{pass-through} mechanisms \cite{bodnar2002pass}. We therefore obtain a variation of production for sectors with respect to carbon price. We denote $R_i(\tau_t^s)$ the production decrease ratio related to carbon price $\tau_t^s$. As in \cite{adenot2022cascading}, under the assumption that the earnings are generated by the production, which is a reasonable assumption, $1-R_i(\tau_t^s)$ is the decrease in earnings. 
+
+\begin{remark}
+    Without better approximation, we use constant unitary production-price elasticity is conservative $\gamma_i=1$. Production shocks may be reduced $\gamma_i<1$, for example using empirical elasticity functions. Hence, the results obtained are the very conservative, creating a upper bound on the effect of carbon price. % Moreover, we assume the supply-demand equilibrium \cite{gale1955law}, which in short-term after the introduction of the tax can be broken.
+\end{remark}
+
+Finally, under the assumption of constant EV-EBITDA ratio (EV standing for enterprise value) \cite{mauboussin2018does}, authors of \cite{adenot2022cascading} consider that the valuation of a company is proportional to its earnings, they apply the shock $R_i(\tau_t^s)$ on EV. Hence the impact of carbon price $\tau_t^s$ on sectoral stock market indices is $1-R_i(\tau_t^s)$. 
+
+\subsection{Effects of transition costs on transition matrices}
+
+In order to stress the rating transition matrices, we use the conditional transition matrix function $TM(Z_t;L^{TTC})$. As said above, the factors $Z$ can be related to macro-financial factors, using for example regression models or expert knowledge. We note $X^{MF}$ the macro-financial variables, observed at each time $t$ and model $Z$ as:
+
+\begin{align}
+    Z_t=\beta^T X_t^{MF} + \epsilon_t
+\label{eq:regression}
+\end{align}
+
+\noindent where $\epsilon_t \sim \mathcal{N}(0,1)$. 
+
+\vspace{0.3cm}
+
+$X^{MF}$ can be composed with macro-economic indicators (e.g., gross domestic product), sectoral production indicators (e.g., sectoral gross-value added), socioeconomic indicators (e.g., unemployment), and credit quality indicators (e.g., credit spreads). 
+The choice of explanatory variables depends on two main drivers. First, the regression must be significant, both in terms of prediction quality (e.g., mean-squared error between prediction and ground truth), quality of the fit (e.g., the $R^2$ of the regression) or the p-values of the coefficients of the regression. Second, in our case the variables that explain the factors $Z$ must be sensitive to carbon cost.
+
+\vspace{0.3cm}
+
+For the corporate TMs, we find that equity prices significantly explain the behavior of the factor $Z$. We assess the variations of the TMs with respect to transition risk using stressed equity prices/EV, hence:
+
+\begin{align}
+X^{MF}_t=\left[\Delta^{\%}_t E, Z_{t-1}, 1 \right]^T
+\label{eq:x_MF}
+\end{align}
+
+\noindent where $\Delta^{\%}_t$ is the \textit{percentage of variations} operator, $E$ is the equity price/EV. 
+
+\vspace{0.3cm}
+
+Two assumptions are possible for the variations of the sectoral equity prices related to carbon price. In a conservative assumption, equity prices of sector $i$ vary of $1-R_i(\tau_t^s)$. Hence, we choose
+
+\begin{align}
+    X^{MF}(\tau_t^s)=\left[(1-R_i(\tau_t^s)), Z^s_{t-1}, 1 \right]^T.
+\label{eq:x_MF_carbon}
+\end{align}
+
+\noindent From macro-financial projections $X^{MF}(\tau_t^s)$ we can generate factors $Z^s_{t}$ using equations \eqref{eq:regression} and $TM_t^s$ using equation \ref{eq:conditional_TM}, i.e.:
+
+\begin{align}
+    TM^s_t = TM(\beta^T X^{MF}(\tau_t^s);L^{TTC})
+\label{eq:tm_scenario}
+\end{align}
+
+\vspace{0.3cm}
+
+We now have all the elements to stress TMs with direct (and indirect) effect of carbon price at sectoral level taking into account the chain value of the economy. An overview of the full model is given in Figure \ref{fig:overview_method}. 
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures TM/climate_stress_test.png}
+    \caption{Overview of the full methodology to generate stressed TMs with carbon price trajectories. Orange arrows (eq. \eqref{eq:shift_problem}) describe the relation between TMS and factor $Z$. Green arrows (eq. \eqref{eq:regression}) describe the relation between macrofinancial variables $X^{MF}$ and factor $Z$. Blue arrows (eq. \eqref{eq:conditional_TM}) describe the generation of transition matrices from stress factors $Z^s$. Purple arrows (eq. \eqref{eq:tm_scenario}) desribe the generation of factor $Z$ from macrofinancial variables stressed by carbon price $X^{MF}(\tau^s)$. 
+    Historical data corresponds to timesteps $t=1, \dots, T$. Scenarios correspond to timesteps $t \in \{T+1, T+2, \dots\}$. Corresponding equations are displayed in circles. }
+    \label{fig:overview_method}
+\end{figure}
+
+\vspace{0.3cm}
+
+To our knowledge, no existing paper brings together standard TM modeling and value chain tax diffusion, and by extension no author has proposed a focus on TMs forward-looking stress test with carbon price trajectories and value chain diffusion, using a modeling framework that meets the requirements of CST exercises. The closest related works are described in the next section.  
+
+
+\section{Related work}
+\label{sec:related_work}
+
+A consistent view of academics, professionals, public sector regulators and policy economists is that transition risks related to new regulations are a top climate risk to businesses and investors over the coming years \cite{stroebel2021you}. In particular, the regulations, for example the NDCs, in which a carbon pricing scheme is implemented, has a direct impact on transition costs paid by companies, that may have a large influence on their performance and creditworthiness. 
+
+\vspace{0.3cm}
+
+Several studies have examined empirically the impact of carbon pricing on financial performance and risk. For instance, \cite{oestreich2015carbon} investigated the effect of the ETS on German stock market returns. They showed that companies that received EU allowances were on average better than ones who didn't. This result confirms the conclusions of \cite{oberndorfer2009eu}, which proposed a similar study carried out on electricity companies in several European countries, and of \cite{scholtens2014carbon}, which analyzed the positive effects of the EU-ETS system on stock market returns in four industries responsible for a majority of EU GHG emissions. Other studies have shown the extent to which market prices have already incorporated carbon risks. For example \cite{andersson2016hedging} showed that as long as climate change mitigation politics are pending, the low-carbon index performs in line with the benchmark; once GHG emissions are priced, the low-carbon index should start to outperform the benchmark. \cite{gorgen2020carbon} developed a measure of carbon risk and observed two opposite effects: high-emission companies have higher average returns, but when firms become relatively browner their returns are lower. They also showed that carbon risk premium is insignificant, suggesting that investors may not require compensation for bearing carbon risk. 
+
+\vspace{0.3cm}
+
+Yet, the stress test is a forward-looking exercise, where historical data may be used to calibrate models but impacts are drawn from scenarios and associated carbon price trajectories that cannot be observed in past data. Therefore, we believe that specific models should be developed. In a regulatory context (see Figure \ref{fig:timeline}), climate stress tests assess the credit risk borne by banks over scenarios, and subsequent additional provisions. 
+
+\vspace{0.3cm}
+
+Recent papers have examined the impact of carbon price change on credit risk.
+\cite{battiston2017climate} were the first to propose the use of climate
+scenarios from Integrated Assessment Models (hence in a scenario-based foward-looking view) to carry out climate stress tests of financial institutions in the context of transition risk. Authors had an empirical approach in which they compute the absolute and relative exposure of each financial actor type to different sectors with several exposure to climate transition risk (e.g., fossil-fuel, utilities, energy-intensive, housing, transport, etc.). They found that direct and indirect exposures to climate-policy-relevant sectors represent a large portion of investors' equity portfolios, especially for investment and pension funds, and that the portion of banks' loan portfolios exposed to these sectors is comparable to capital of banks. Finally, they computed individual banks' \textit{value at risk}, under green and brown investment strategies. \cite{jung2021climate} introduce a measure called CRISK for systemic climate risk assessment, which is the expected capital shortfall of a financial institution in a climate stress scenario. It consists of three steps. First, measure of a climate risk factor using stranded asset portfolio returns as a proxy measure for transition risk. Second, estimate of a time-varying climate beta of financial institutions using a Dynamic Conditional Beta model. Third, computation of CRISK as a function of a given financial firm's size, leverage, and expected equity loss conditional on climate-related stress, based on the SRISK measure of \cite{brownlees2017srisk}. \cite{garnier2021climate} modelled the loss of a credit portfolio using the Merton-Vasicek model with correlated climate risk factors (as exposed in equation \eqref{eq:multi_merton}). They applied their model to climate trajectories, mixing macro-financial risk factors, transition risk factors and regional physical risk factors. 
+
+\vspace{0.3cm}
+
+A widely used model to integrate carbon price risk into credit risk is the use of the structural Merton's model \cite{merton1974pricing}. 
+For example, a study by the United Nations Environment Programme Finance Initiative \cite{unepfi2018extending} used the structural Merton's model to estimate the PD (Probability of default) of a counterparty including a carbon price. The Merton model describes the value of a company as the price of a call option on its assets with an exercise price equal to the company's liabilities. With this model, we can estimate the probability that a firm's assets will no longer offset its liabilities, and by extension estimate its PD. \cite{capasso2020climate} showed that Merton's PD is negatively associated with the amount of carbon emissions of a company, as well as its carbon intensity. \cite{bouchet2020credit} analyzed the impact of variations in the carbon price at the sectoral level, for a variation in the carbon price of up to \$20 for short-term risks, and up to \$780 for long-term risks, using a methodology also used in \cite{belloni2022euro}. However, both papers have two practical limitations for banks. First, the assumptions of Merton's model are particularly restrictive: perfect frictionless markets, each firm's liabilities are zero-coupon bonds, the value of the firm does not depend on its financial structure, and is a stochastic process with constant volatility. Second, the authors use only Scope 1 GHG emissions, which is not in line with the ECB's CST requirements. \cite{reinders2023finance} also used a structural Merton's model to assess the impact of a carbon tax shock on the market value of equity and debt instrument. As in \cite{bouchet2020credit} they assumed an instantaneous shock on asset value, but based on a ratio ``carbon cost on the net present value of the company" and not on a ratio ``carbon cost on EBITDA''. They apply their approach on the value of corporate debt and residential mortgages, in the Dutch banking sector. They find declines in the market value of banks' assets of 2â€“13\% of core capital for a â‚¬100 carbon tax shock, increasing to 6â€“29\% for a â‚¬200 carbon tax shock. Other authors use structural models to build endogenous credit risk default models. \cite{agliardi2021pricing} developed a bond pricing model, where jumps in firm's value are conditioned to both financial roots (e.g., earnings) and uncertainty about firm's carbon risk. They apply their model to firms issuing green bonds. \cite{le2022corporate} developed a structural model where the transition risk impacts' magnitude depends on an initially unknown transition scenario. This is progressively revealed through the observation
+of the carbon price trajectory. The carbon price is assumed inflationary and modeled as a compound Poisson distribution (i.e., the adjustments of the carbon price are assumed i.i.d.). Depending on the scenario, the intensity of the involved Poisson distribution increases. The scenario probabilities are updated with the carbon price process, and consequently the firm's value and default probability. In \cite{battiston2022structural}, they went further and adjusted the credit risk not only with instantaneous carbon effects, but with the potential realisation of the transition scenarios, taking into account the dynamic evolution of firms' technological and financial structure.
+
+\vspace{0.3cm}
+
+A more practical approach was proposed by \cite{pineau2022sensibilite}, where authors presented a method for assessing the sensitivity of PDs to the carbon price by directly shifting financial variables of a rating calculator (based on financial ratios) with carbon cost (computed on the three scopes of carbon). The mean variations of PD confirmed and extended the results of \cite{bouchet2020credit}, by showing that Material, Utilities, Consumer Staples and Energy are the most sensitive to carbon price, with a variation of PD of 4-6\% for a carbon price increase of \$100 per ton equivalent. A similar example is the Axylia's Carbon Score\footnote{https://www.axylia.com/score-carbone-axylia}, which tells investors and individuals whether a company is \textit{creditworthy} and \textit{responsible} after subtracting from its revenues the cost of the carbon emitted. For banks, this Carbon Score is an indicator of the creditworthiness of the companies in their portfolios with regard to climate issues. 
+
+\vspace{0.3cm}
+
+Yet none of the previous contributions model the interdependence between sectors, with a diffusion of risks. To do so, several papers use the Leontief IO model and related IODs to incorporate environmental aspects in the typical input-output economic framework. 
+
+\vspace{0.3cm}
+
+In a seminal paper \cite{leontief1970environmental}, authors analyzed the pollution generated as by-product of economic activities. It considers two economic sectors taking into account the production of good and bad outputs (pollution) and includes a third sector: a pollution abatement sector. The inputs assigned to the latter are used to remove the pollution generated by the other two sectors. \cite{leontief1973national} proposed a linkage between IO tables with data on natural resource inputs, the transformation of the resources in the production process and the assessment of the formation of residuals resulting from the economic activity. They take into account the environmental negative impact coming from the economic activities through the assessment  of pollutants. They use an IOD that do not only include the intersectoral flows of goods and services but also the generation of pollutants and activities aimed at their elimination. \cite{steenge1978environmental} analyzes an apparent inconsistency in Leontiefâ€˜s formulation when including tolerated pollutants levels and proposed a reformulation of the model to bypass this problem. A non-negative vector of gross output levels for any final demand was guaranteed if  tolerated pollution exceeded total generated pollution.
+
+\vspace{0.3cm}
+
+Some papers directly model the diffusion of a carbon tax costs in the value chain of the economy, using Leontief framework. %In particular, \cite{gemechu2014economic} computes a sectoral tax rate, \cite{mardones2020economic} shows the variation of the sectoral production related to carbon tax and \cite{adenot2022cascading} models the variation of the valuation of companies after the introduction of the tax. 
+\cite{gemechu2014economic} studied the direct and indirect effects when applying a $CO_2$ tax  on  Spanish products and services. They used an extended IO (EIO) model to estimate the sectoral $CO_2$ emissions intensities taking into account all the interactions between sectors and an environmental tax is set proportional to each sector's emissions intensity. Then a Leontief price model was used to investigate the impact of the environmental tax on the Spanish economy. This study enables us to analyze the trade-off between the economy, society and the environment, when applying an environmental tax. For instance, they showed that a tax on electricity production and distribution sector would imply a reduction of 2\% in the total $C0_2$ emissions. However it would lead to a negative impact on social welfare. 
+\cite{mardones2020economic} studied the effect of global ($CO_2$) and local ($S0_2$, $NO_x$ and PM) air pollutants taxes in the Chilean economy as the result of the implementation of this policy after 2017. In general, an increase on the carbon tax rate leads to an increase of sectoral prices, implying a reduction of production. The energy sector is the most impacted with the application of the $C0_2$ tax. If the value of production is assumed to be constant in the short-term, the production of the Chilean electricity sector decreases by around 22.56\% when a carbon tax of 50 USD per ton of  $C0_2$ is applied. 
+In \cite{adenot2022cascading}, an IO framework is used to estimate the impact of carbon price  at a firm level. Authors studied the cross-sector diffusion of the carbon cost through the value chain. They showed that the impact of carbon price is shared not only among high carbon-intensive sectors but also among low carbon-intensive sectors, due to the cascade effect on firm's supply chains. In particular, they demonstrated that when applying a carbon price of 50 USD, the earnings shocks suffered by the firms in low carbon-intensive sectors (Information Technology, Consumer Discretionary and Consumer Staples earning shows are around 3\%-4\%) are not negligible, with respect to the high carbon-intensive ones (Utilities, Energy and Materials earnings shocks are between 7\% and 12\%). 
+Finally, \cite{cahen2021capital} remarked that production and consumption of fossil fuels should decrease drastically in order to achieve a low-carbon transition. However, the entire economic system could be affected by this process due to production network linkages. The authors proposed a method to assess how this defossilisation process could strand capital stocks across different countries and productive sectors. Their methodology is based on a multi-regional IOD (MRIO) and a supply-side model. They analyze stranding multipliers, which measure the exposure to the risk of becoming stranded. The fossil sector exhibits the highest external stranding multiplier. In addition, they found that sectors that are not affected by direct stranding links (as for instance public administration, real estate and land transportation) are highly exposed to indirect cascading effects. When analyzing external marginal stranding multipliers across countries, they found out that France, Australia and Slovakia are the ones with the highest values.
+
+\section{Used data}
+\label{sec:data}
+
+\noindent \textbf{Historical transition matrices}
+The European Securities and Markets Authority (ESMA) publishes semi-annual statistical data on the performance of credit ratings, including transition matrices and default rates. The historical transition matrices are available in the Central Rating Repository (CEREP). We use historical annual transition matrices on the period of 2001-2018 published by Standard \& Poors, Fitch and Moody's. Hence following the notation of Section \ref{sec:factor_represetation_tm}, we have $T=2018$ and annual timesteps $t \in \{2000, \dots, 2018 \}$. The transition matrices have 9 plots: 8 migration plots (AAA, AA, A, BBB, BB, B, CCC, CC, C) and 1 default plot (D). The meaning of the ratings is given in Table \ref{tab:ratings}. The historical matrices are the PiT observations, from which we compute a TTC matrix (as presented in Section \ref{sec:factor_represetation_tm}). An example of the TTC PD scale (computed as empirical default rates on all observations) is given below in Table \ref{tab:ratings}. 
+
+\begin{table*}[h!]
+\centering
+\begin{tabular}{|l|l|c|c|c|c|}
+\hline
+Ratings &  Definition &   Default rates & Weights \\
+\hline
+AAA &  Prime &    0.04\% &   1.67\%  \\
+AA & High grade &   0.02\% &   7.78\% \\
+A & Upper medium grade &    0.07\% &  22.72\%  \\
+BBB & Lower medium grade   &    0.18\% &  29.91\% \\
+BB & Speculative    &   0.77\% &  14.58\%  \\
+B & Highly speculative &    3.59\% &  18.55\%  \\
+CCC & Extremely speculative &  18.19\% &   4.16\%  \\
+CC & Imminent default  &   36.74\% &   0.49\%  \\
+C & Very imminent default &  37.93\% &   0.13\%  \\
+\hline
+\end{tabular}
+\caption{Ratings table and default rates. Weights represent the quantity of observations per rating in historical data. Details about the construction of the default rates scale are given in Section \ref{sec:data}.}
+\label{tab:ratings}
+\end{table*}
+        
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.4\textwidth]{Figures TM/tm_ttc.png}
+%    \caption{TTC migration matrix computed from ESMA's history.}
+%    \label{fig:scenarios_ngfs1}
+%\end{figure}
+
+\vspace{0.3cm}
+
+\noindent \textbf{NGFS scenarios.} We use five scenarios for which economic and climate trajectories are jointly generated. These scenarios are projected trajectories proposed by the NGFS, generated by coupling climate-related assumptions and macroeconomic models of the National Institute Global Econometric Model (NiGEM)\footnote{\url{https://www.niesr.ac.uk/nigem-macroeconomic-model}}. The five scenarios are:
+
+\begin{itemize}
+    \item \textbf{Below 2Â°C (B2)} scenario assumes a rapid and ambitious global transition towards a low-carbon economy, with significant investments in renewable energy, energy efficiency, carbon capture and storage, giving a 67\% chance of limiting global warming to below 2Â°C.
+    \item \textbf{Net Zero 2050 (NZ50)} scenario is an ambitious scenario that limits global warming to 1.5Â°C through stringent climate policies and innovation, reaching net zero carbon emissions around 2050. This is with some jurisdictions such as the US, EU and Japan reaching net zero for all GHGs by this point.
+    \item \textbf{Delayed transition (DT)} scenario assumes that policy and investment decisions are delayed, and that the pace of technological innovation is slower than anticipated, leading to a more gradual shift away from fossil fuels. Annual emissions do not decrease until 2030, resulting in the need for strong policies to limit warming to below 2Â°C.
+    \item \textbf{Divergent Net Zero (DNZ)} scenario assumes that economies reach net-zero by 2050 but with higher costs due to divergent policies introduced across sectors and a quicker phase out of fossil fuels.
+    \item \textbf{Nationally Determined Contributions (NDCs)} includes all pledged policies even if not yet implemented
+    \item \textbf{Current policies (CP)} scenario assumes that only currently implemented policies are preserved, leading to few transition risks but high physical risks.
+\end{itemize}
+
+We can see in Figure \ref{fig:scenarios_ngfs} the trajectories of carbon price, carbon emissions and US GDP underperformance compared to current policies (from 2015), projected by the NGFS for the previously listed transition scenarios. Scenarios can be downloaded in the NGFS Scenarios Portal\footnote{\url{https://www.ngfs.net/ngfs-scenarios-portal/data-resources/}}. We note that many other macro-financial variables are projected along the climate trajectories for each scenario. For this paper, we only use these three variables to compute the direct effect of carbon price on TMs. 
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.65\textwidth]{Figures TM/carbon_price.png}
+    \includegraphics[width=0.65\textwidth]{Figures TM/gdp_ngfs.png}
+    \includegraphics[width=0.65\textwidth]{Figures TM/carbon_emissions.png}
+    \caption{Trajectories projected by the NGFS, based on scenarios listed above. \textbf{From top to bottom}: carbon price trajectories from 2015, carbon emissions trajectories from 2015, US GDP underperformance compared to the CP scenario from 2022.}
+    \label{fig:scenarios_ngfs}
+\end{figure}
+
+\vspace{0.3cm}
+
+To compute the coefficients $c^s_t$, we divide the starting point intensity by the trajectories of GHG intensity per scenario. The trajectories of GHG intensity are computed by dividing the trajectories of GHG emissions by the trajectories of GDP, for each scenario (both are shown in Figure \ref{fig:scenarios_ngfs}). The coefficients $c^s_t$ are shown in Figure \ref{fig:intensity_coefs}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Figures TM/intensity_coefs.png}
+    \caption{Intensity coefficients to reduce the starting point intensity with global emissions and GDP trajectories.}
+    \label{fig:intensity_coefs}
+\end{figure}
+
+
+\begin{remark}
+    From the scenarios given by the NGFS, we also have trajectories of macro-financial and socio-economic variables that simulate the \textit{indirect effect} of transition. Hence, we may compute the indirect effect of transition on TMs, directly using the projected equity prices for each scenario, passed throughout the equation \ref{eq:regression}. Yet, in this paper, we are only interested in direct effect of transition costs with chain value effects. 
+\end{remark}
+
+\vspace{0.3cm}
+
+\noindent \textbf{Input-Output databases} (IOD) are databases that store information about the inputs and outputs of economic activities within an economy. It is a powerful tool for analyzing the interrelationships between different sectors of an economy and for estimating the impact of changes in one sector on the rest of the economy.
+
+In an IOD, each sector of the economy is represented as a row, and each column represents a different sector. The entries in the database show the amount of inputs that each sector uses from other sectors, as well as the amount of outputs that each sector produces and sells to other sectors. IODs can be used for a wide range of applications, including economic analysis, environmental analysis, trade analysis, and policy analysis. Several IODs exist and are used in academic papers to model geo-sectoral interdependence. \textit{The World Input-Output Database (WIOD)}\footnote{\url{https://www.rug.nl/ggdc/valuechain/wiod/?lang=en}} is a multi-region input-output (IO) model, which captures the complex interdependence between 40 different countries whose economy is divided into 56 NACE sectors. \textit{EXIOBASE}\footnote{https://www.exiobase.eu/} is a global, detailed, and fully integrated environmentally extended multi-regional IOD that provides information on the environmental impacts of economic activities.  %It includes data on economic transactions between different sectors and regions, as well as information on the environmental impacts of these transactions.
+It covers over 43 countries, and includes data on 163 industries and 200 products.  %EXIOBASE also provides information on a wide range of environmental impacts, including GHG emissions, air pollution, water use, and land use. 
+\textit{The Full International and Global Accounts for Research in input-Output analysis (FIGARO)\footnote{\url{https://ec.europa.eu/eurostat/web/esa-supply-use-input-tables/data/database}}} is an IOD of EU Member States and 18 main EU trading partners, with annual inter-country IO tables product by product and industry by industry (with NACE classification). \noindent \textit{The OECD Inter-Country Input-Output (OECD-ICIO)}\footnote{\url{https://www.oecd.org/sti/ind/inter-country-input-output-tables.htm}} contain detailed information on the flows of goods and services between industries and between countries, and the inputs required to produce these goods and services. 
+
+\vspace{0.1cm}
+
+For the experimental part of our paper, we use the FIGARO database since it gathers all the requirements for our problem (NACE sector classification like ECB regulatory exercises, and data that goes up to 2020). 
+
+\vspace{0.3cm}
+
+\noindent \textbf{GHG emissions data.} The FIGARO database also provides GHG emissions data, for the same countries and industries as the IODs presented above. Hence, from the FIGARO database we gather geo-sectoral production and geo-sectoral GHG emissions, and estimate geo-sectoral GHG intensities (i.e., the vector $G$). % (see Table \ref{tab:intensities}).  %Users can search and download data, create custom tables and charts, and access the latest news and publications. The database includes data on topics such as national accounts, trade, employment, education, health, and the environment.
+
+\vspace{0.3cm}
+
+\noindent \textbf{Historical macro-financial variables.} For the illustration, we use the historical annual growth rate of S\&P500 index for the period of 2001-2018 to fit our model, and the related TMs and macro-financial environment, before introducing carbon prices trajectories given in the NGFS scenarios. 
+
+\vspace{0.3cm}
+
+\noindent \textbf{Sectoral classification.} Several taxonomies exist to categorize companies based on their principal business activity. Two are mainly used by OECD regulators: Global Industry Classification Standard (GICS) classification (mainly in US), and the Nomenclature statistique des ActivitÃ©s Ã©conomiques dans la CommunautÃ© EuropÃ©enne (NACE) classification. There exist no exact match between these two taxonomies, yet we can find proxies. For this paper we use the matching proposed by the AutoritÃ© de ContrÃ´le Prudentiel et de RÃ©solution (ACPR)\footnote{\url{https://acpr.banque-USA.fr/sites/default/files/media/2020/07/16/matching_of_gics_to_nace_sectors_acpr.xlsx}}, created in the context of the  climate stress test pilot exercise\footnote{\url{https://acpr.banque-USA.fr/sites/default/files/media/2020/07/16/modalites_techniques_assurances_16072020.pdf}} preceding the ECB climate stress test. We present all the results at GICS-1 level, for better readability. 
+
+
+\section{Direct effect of carbon price on US transition matrices}
+\label{sec:experiments}
+
+In this section, we apply our model to US data in order to illustrate the full end-to-end integration of carbon price shock into corporate TMs, to assess the exposure of bank's coporate portfolios to direct carbon price risk. We note that the model demonstrated in Section \ref{sec:key_elements} is fully implementable with free data and open source language. The code to reproduce will be released after publication. 
+
+\vspace{0.1cm}
+
+We take $T=2018$ (last point of observed historical PiT TMs. Hence $T+1=2019$ is the starting point of all scenarios. 
+
+\vspace{0.3cm}
+
+\noindent \textbf{Factor inference and relation with macro-financial variables.} We first extract the factor $Z$ using equation \eqref{eq:shift_problem}, shown in Figure \ref{fig:shifts_prediction} (orange line). Second we fit the parameters of the regression \eqref{eq:regression} on historical S\&P500 index growth, to explain historical factor $Z$ with macro-financial variables. Factor and prediction are displayed in Figure \ref{fig:shifts_prediction} and Table \ref{tab:regression_shift}. We therefore have a model to generate US TMs with equity price growth. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures TM/shifts_prediction.png}
+    \caption{Historical factor $Z$ (computed using eq. \eqref{eq:shift_problem}) and prediction from $X^{MF}$ (eq. \eqref{eq:x_MF}) using linear regression. The $R^2$ of the optimal model is $90\%$. Parameters are given in Table \ref{tab:regression_shift}.}
+    \label{fig:shifts_prediction}
+\end{figure}
+
+\begin{table}[h!]
+    \centering
+    \input{Figures TM/regression_shift}
+    \caption{Results of the regression of equity on $Z$, with auto-regression (lag) of order $1$.}
+    \label{tab:regression_shift}
+\end{table}
+
+We see that the regression has significant non-zero coefficients and hight $R^2$ score. The coefficients give a global (non-sectoral) sensitivity of credit matrices with equity prices. 
+
+\begin{remark}
+    With sectoral historical TMs and macro-financial variables, we may compute sectoral regression parameters. Yet, this data cannot be found easily and a global approximation with the same sensitivity of TMs with respect to equity is a necessary proxy. We note that the carbon cost effect is sectoral. Therefore, we will finally obtain sectoral TMs related to carbon price trajectories, ceteris paribus. 
+\end{remark} 
+
+\vspace{0.3cm}
+
+\noindent \textbf{Sectoral effects of carbon price on economic production.} An intermediate result of the introduction of a tax in the Leontief model is the decrease in production, given by the score $R_i(\tau^s_t)$ for a carbon price scenario $s$ observed at time $t>T$ (equation \eqref{eq:production_price_ratio}). Compared to the results in \cite{adenot2022cascading}, we do not only take the US-to-US exchange of production but World-to-US inputs and US-to-World outputs (US included in World). Yet, we find a similar ordering of the sectors and similar order of magnitude. % , except for Utilities which is less connected to the rest of the world, hence less sensitive to global value chain diffusion of carbon price. 
+
+\begin{table}
+    \centering
+   
+    \input{Figures TM/shock_production_sectors}
+     \caption{Loss of production (eq. \eqref{eq:production_price_ratio}) for different carbon prices and sectors, with $\gamma_i=1$ (i.e. no protection and no assumption on carbon pass-through. The first carbon price is low and close the effective carbon price currently paid by companies. The highest carbon price is an upper bound on middle-term carbon prices. We note that these shocks may be lowered using expert-based or empirical elasticity coefficients $\gamma_i$ for each sector $i$ in eq. \eqref{eq:production_price_ratio}. The higher the harder shock for sectors. \underline{Example}: the theoretical reduction of the sector Utilities is 54.6\% with a carbon price at \$100 with no pass-through effect ($\gamma_i=1$). }
+\label{tab:shock_production_sectors}
+\end{table}
+
+\vspace{0.1cm}
+
+The introduction of cost diffusion across the value chain creates an additional shock to production. In fact, among the most exposed sectors, some are less affected by direct stranding links from the high-emissions sectors, but are instead exposed to indirect cascading effects. With the value chain effect, the sectoral carbon tax vector is $\tau_t^s M_t^s$ ; without the value chain effect we have $\tau_t^s G_t^s$. The effect of the introduction of value chain effect throughout Leontief model on production shock related to carbon price is displayed in Figure \ref{fig:leontief_effect_production}. For example, the effect on a low-emission sector like Real Estate, which has a very low intrinsic production shock, is multiplied by 4.1, by the cascading effect of the carbon price throughout the value chain. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures TM/leontief_effect_production.png}
+    \caption{Ratio between production shock (eq. \eqref{eq:production_price_ratio}) with and without indirect cost diffused on the value chain using Leontief model. \underline{Example}: taking into account the additional carbon costs diffused on the value chain multiplies by around $1.8$ (on average) the production shock for companies of the sector Consumer Discretionary. Quantiles are computed from the production shock related to several carbon prices.}
+    \label{fig:leontief_effect_production}
+\end{figure}
+
+\vspace{0.1cm}
+
+\begin{comment}
+
+In Figure \ref{fig:AB_carbon_leontief_fra}, we display the new Leontief matrices to illustrate the effect of additional cost on the structure of the matrix. From these elements, we can compute the direct effects of carbon price on TMs.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.525\textwidth]{Figures TM/A_carbon_100_leontief.png}
+    \includegraphics[width=0.465\textwidth]{Figures TM/B_carbon_100_leontief.png}
+    \caption{Leontief $A(\tau)$ and $B(\tau)$ after the introduction of a carbon tax at $\tau=100$, presented at GICS-1 level.}
+    \label{fig:AB_carbon_leontief_fra}
+\end{figure}
+
+\end{comment}
+
+\vspace{0.3cm}
+
+\noindent \textbf{Direct effects of carbon price trajectories on TMs.} Finally, we can generate the stress TMs using equation \ref{eq:tm_scenario}. 
+\begin{comment}
+First, for illustration we still suppose that carbon price increases by $\$100$ in a sharp unexpected rise. The effect on production has been shown in Table \ref{tab:shock_production_sectors} above. We note that Utilities has particularly high shocks. It is due to the presence of the \textit{generation of electricity} and \textit{manufacture of gas} (NACE D35) that has high direct emission intensities. From these production shocks we compute the factors $R_i(100)$ and subsequently stress the TMs. For this example, we display only the PD shocks in Table \ref{tab:shock_pd_ratings_sectors} to illustrate the effect of production decrease related to carbon price rise to $\$100$.  
+
+\begin{table}[h!]
+    \centering
+  
+    \input{Figures TM/shock_pd_ratings_sectors}
+     \caption{PD shock (difference, in \%) compared to starting point $T$ with carbon tax at $\$100$.} \label{tab:shock_pd_ratings_sectors}
+\end{table}
+
+\vspace{0.1cm}
+
+\end{comment}
+We stress the TMs using NGFS scenarios presented in Section \ref{sec:data}, with the full capacity of our model. We display in Tables \ref{tab:pd_shocks_2030} the mean shock of PD related to the trajectories of carbon price given by the NGFS in 2030, compared to CP scenario, weighted with weights given in Table \ref{tab:ratings}. We observe that on average, the DNZ, as expected by its definition, is the most severe scenario in terms of PD. In particular, the derived mean PD shocks are large for Utilities, Materials and Energy sectors, with average impacts achieving $19.7\%$, $11.8\%$ and $9.8\%$ respectively for DNZ scenario in 2030. We see two main reasons: Utilities, Energy and Materials have high direct emissions and they are the most self-dependent sectors. It means that if the demand decreases, the leverage effect on final production is higher, hence on final earnings. In 2040, the shocks are reduced compared to 2030 for DNZ scenario whereas the carbon price continues to increase. This is due to the carbon intensity reduction coefficient $c_t^s$. It is the opposite for the DT scenario, since it assumes strong policies after 2030.  
+
+\begin{table}[h!]
+    \centering
+    \input{Figures TM/mean_pd_shock_2030_40}
+      \caption{Sectoral mean PD shocks (difference, in \%) compared to CP on NGFS scenarios. \underline{Example}: the PD of Utilities companies can increase from 19.7\% by 2030 compared to baseline, if the transition pathway follows DNZ scenario. }
+    \label{tab:pd_shocks_2030}
+\end{table}
+
+\vspace{0.1cm}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Figures TM/mean_effect_coef_intensity.png}
+    \caption{Ratio between PD shock with and without the introduction of the carbon intensity reduction coefficient $c_s^t$ at each time $t$ following the GDP and GHG pathways of scenario $s$. The ratio is computed on all scenarios. The blues dots are the average ratio, and the blue envelope represents the uncertainty. \underline{Example}: the PD shock is on average 37\% lower in 2030 ($1-0.63$) with the intensity reduction coefficient. }
+    \label{fig:mean_effect_coef_intensity}
+\end{figure}
+
+In fact, one particularity of our model compared to related work is the introduction of the carbon intensity reduction coefficient $c_t^s$. The introduction of this coefficient makes the results more plausible. We can see in Figure \ref{fig:mean_effect_coef_intensity} the effect of the intensity reduction pathways on PD shocks related to carbon price projected in NGFS scenarios, computed as the ratio of PD shocks with and without carbon intensity reduction coefficient $c_t^s$.  
+
+\vspace{0.1cm}
+
+Finally, to obtain the sensitivity of TMs to carbon price for a scenario $s$ at time $t$, we compute the difference $TM^s_t - TM_t^{CP}$. As an illustration, we display this sensitivity for the Industrials and Materials sector, in 2030, respectively in Figure \ref{fig:shock_ngfs_tms_industrials} and \ref{fig:shock_ngfs_tms_materials}, for four scenarios of the NGFS. We also observe the evolution of the one-dimensional factor $Z$ stressed with carbon price trajectories. In the representation factors of the TMs, we first observe the years 2019-2021, for which we have unique historical equity prices since it is in the past. We observe the Covid shock with a pick at 0.4 of the factor. It gives us a baseline for a stressed period. On the other hand, 2021 was a year of economic recovery, and it gives us the factor value for a highly performing year. We can see that for Industrials, the stress applied to TMs related to carbon trajectories barely exceeds Covid stress. For Materials, the shock largely exceeds the Covid stress for scenarios DNZ, NZ50 and DT (post-2030). In the matrices of TMs shocks, we can see the diffusion of the risk to the upper triangle of the TMs (probability of credit rating degradation), and the related reduction of the diagonal probabilities (hence a reduction of the stability of credit conditions) and the lower triangular transition rates (the probability of recovering).  
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{Figures TM/shift_Industrials.png}
+    \includegraphics[width=0.47\textwidth]{Figures TM/tm_ttc_B2_Industrials_2030.png}
+    \includegraphics[width=0.47\textwidth]{Figures TM/tm_ttc_NZ50_Industrials_2030.png}
+    \includegraphics[width=0.47\textwidth]{Figures TM/tm_ttc_DNZ_Industrials_2030.png}
+    \includegraphics[width=0.47\textwidth]{Figures TM/tm_ttc_NDC_Industrials_2030.png}
+    \caption{Curves: Fators $Z$ for all NGFS carbon trajectories. Matrices: shift in TMs' entries four NGFS carbon trajectories compared to CP (difference, \%), at 2030 for Industrials sector.}
+    \label{fig:shock_ngfs_tms_industrials}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{Figures TM/shift_Materials.png}
+    \includegraphics[width=0.47\textwidth]{Figures TM/tm_ttc_B2_Materials_2030.png}
+    \includegraphics[width=0.47\textwidth]{Figures TM/tm_ttc_NZ50_Materials_2030.png}
+    \includegraphics[width=0.47\textwidth]{Figures TM/tm_ttc_DNZ_Materials_2030.png}
+    \includegraphics[width=0.47\textwidth]{Figures TM/tm_ttc_NDC_Materials_2030.png}
+    \caption{Curves: Fators $Z$ for all NGFS carbon trajectories. Matrices: shift in TMs' entries four NGFS carbon trajectories compared to CP (difference, \%), at 2030 for Materials sector.}
+    \label{fig:shock_ngfs_tms_materials}
+\end{figure}
+
+
+\section{Conclusion}
+
+ In our paper, we proposed a methodology to assess the effect of carbon price (paid by companies) on bankâ€™s rating corporate transition matrices. Such a methodology enables to compute the sensitivity of bank's to carbon price through the creditworthiness of their corporate portfolios. Our approach is based on three main elements of credit risk management and economic modeling. First, we used a one-parameter representation of transition matrices to obtain a generative factor and a model, from which we can generate new transition matrices. Second, we related this factor to equity growth such that we can generate transition matrices in relation with the macro-financial environment. Third, we used a sectoral decomposition of the economy using an input-output framework called Leontief model. Using this model, we can diffuse a carbon cost across the value chain of the economy, at geo-sectoral level. We plugged this third model to the equity growth involved in the generation of transition matrices. We finally obtained an end-to-end model to stress transition matrices using carbon costs, taking into account the dependence structure of the economy throughout the sectoral value chain. We have illustrated the effect of NGFS scenarios on the transition matrices of the US economy on ten macro-sectors (GICS classification). We observe the diffusion of the risk in the upper triangular part of the transition matrices, and by extension in the estimated probabilities of default. With such a tool, banks, who manage their regulatory capital, using transition matrices, can introduce the direct effect of transition costs into their credit risk management. They can thereby answer regulatory exercises involving climate transition risks. We note that our model can be generalized to any additional cost associated with climate change mitigation, such as energy prices.  
+
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
